@@ -45,31 +45,30 @@
 
 ;     ; return control to the bootloader
 ;     ; ...
-[org 0x7c00] ; tell the assembler that our offset is bootsector code
+[org 0x7c00]
 
-; The main routine makes sure the parameters are ready and then calls the function
 mov bx, HELLO
+xor al, ah
+mov al, 1
+mov ah, 1
+push eax
+cmp al, ah
+jle .L0
 call print
-
 call print_nl
+xor al, ah
 
-mov bx, GOODBYE
-call print
+.L0:
+    mov bx, GOODBYE
+    call print
+    call print_nl
 
-call print_nl
-
-mov dx, 0x12fe
-call print_hex
-
-; that's it! we can hang now
 jmp $
 
-; remember to include subroutines below the hang
 %include "boot_sect_print.asm"
 %include "boot_sect_print_hex.asm"
 
 
-; data
 HELLO:
     db 'Hello, World', 0
 

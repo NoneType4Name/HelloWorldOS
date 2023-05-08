@@ -1,4 +1,7 @@
-// __asm__(".code16\n");
-// __asm__("jmpl $0x0000, $main\n");
-// void main() {
-// }
+int main(){
+    int a{1};
+    int b{2};
+    if (a > b) int c{1};
+    if (a > b) int c{2};
+    return 0;
+}
