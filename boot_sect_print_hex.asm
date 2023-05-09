@@ -24,7 +24,7 @@ hex_loop:
 step2:
     ; 2. get the correct position of the string to place our ASCII char
     ; bx <- base address + string length - index of char
-    mov bx, HEX_OUT + 5 ; base + length
+    mov bx, HEX_OUT + 3 ; base + length
     sub bx, cx  ; our index variable
     mov [bx], al ; copy the ASCII char on 'al' to the position pointed by 'bx'
     ror dx, 4 ; 0x1234 -> 0x4123 -> 0x3412 -> 0x2341 -> 0x1234
@@ -43,4 +43,4 @@ end:
     ret
 
 HEX_OUT:
-    db '0x0000',0 ; reserve memory for our new string
+    db '0000', 0 ; reserve memory for our new string

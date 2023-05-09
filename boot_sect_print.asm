@@ -11,8 +11,8 @@ start:
     je done
 
     ; the part where we print with the BIOS help
-    mov ah, 0x0e
-    int 0x10 ; 'al' already contains the char
+    mov ah, 0eh
+    int 10h ; 'al' already contains the char
 
     ; increment pointer and do next loop
     add bx, 1
@@ -27,11 +27,11 @@ done:
 print_nl:
     pusha
     
-    mov ah, 0x0e
-    mov al, 0x0a ; newline char
-    int 0x10
-    mov al, 0x0d ; carriage return
-    int 0x10
+    mov ah, 0eh
+    mov al, 0ah ; newline char
+    int 10h
+    mov al, 0dh ; carriage return
+    int 10h
     
     popa
     ret
