@@ -3,6 +3,6 @@
 char b[1024];
 int main(){
     _chdir("../");
-    std::system("nasm -f bin boot.asm -o boot.bin && qemu-system-x86_64 boot.bin -boot c");
+    std::system("nasm -f bin Loader/boot.asm -o build/boot.bin && qemu-system-x86_64 build/boot.bin -boot c");
     return 0;
 }
